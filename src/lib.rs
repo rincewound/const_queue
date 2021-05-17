@@ -28,6 +28,7 @@ impl <Ty, const SIZE: usize> ConstQueue<Ty, SIZE>
         }
     }
 
+    /// Yields true, if the queue is empty
     pub fn empty(&self) -> bool
     {
         let first = self.peek();
@@ -38,6 +39,11 @@ impl <Ty, const SIZE: usize> ConstQueue<Ty, SIZE>
         return false;
     }
 
+    /// Tries to push a given item into the queue
+    /// # Arguments
+    /// * `item`: The item to push
+    ///
+    /// Will Result Err(QueueErr::Full) if the queue is full
     pub fn push(&mut self, item: Ty) -> Result<(), QueueErr>
     {
         let next_end = (self.end + 1) % SIZE;
@@ -51,6 +57,11 @@ impl <Ty, const SIZE: usize> ConstQueue<Ty, SIZE>
         Ok(())
     }
 
+    /// Tries to forcibly push a given item into the queue
+    /// # Arguments
+    /// * `item`: The item to push
+    ///
+    /// Will panic if the queue is full
     pub fn force_push(&mut self, item: Ty)
     {
         if self.push(item).is_err()
@@ -59,6 +70,9 @@ impl <Ty, const SIZE: usize> ConstQueue<Ty, SIZE>
         }
     }
 
+    /// Returns an immutable reference to the first element
+    /// of the queue or Err(QueueErr::Empty), if no
+    /// element is in the queue
     pub fn peek(&self) -> Result<&Ty, QueueErr>
     {
         if self.start < self.end
@@ -67,7 +81,7 @@ impl <Ty, const SIZE: usize> ConstQueue<Ty, SIZE>
             match v
             {
                 Some(ref x) => return Ok(x),
-                _ => return Err(QueueErr::UnknownError)
+                _ => return Err(QueueErr::UnknownError) /* This should never happen */
             }
         }
         if self.start > self.end
@@ -76,12 +90,14 @@ impl <Ty, const SIZE: usize> ConstQueue<Ty, SIZE>
             match v
             {
                 Some(ref x) => return Ok(x),
-                _ => return Err(QueueErr::UnknownError)
+                _ => return Err(QueueErr::UnknownError) /* This should never happen */
             }
         }
         return Err(QueueErr::Empty);
     }
 
+    /// Removes the first item in the queue and returns it.
+    /// Will return Err(QeueErr::Empty) if no item is in the queue
     pub fn pop(&mut self) -> Result<Ty, QueueErr>
     {
         if self.start == self.end
