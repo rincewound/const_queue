@@ -211,7 +211,7 @@ mod tests {
     pub fn can_pop_value()
     {
         let mut q = ConstQueue::<i32, 3>::new();
-        let _ =q.push(10);
+        let _ = q.push(10);
         let _ = q.push(20);
         assert!(q.pop().unwrap() == 10);
         assert!(q.pop().unwrap() == 20);
