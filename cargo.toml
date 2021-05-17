@@ -5,9 +5,9 @@ authors = ["Rincewound <aaaargh@minddebugger.com>"]
 edition = "2018"
 license = "BSD"
 description = "A stack-only, no_std queue using const generics"
-homepage = "https://github.com/rincewound/fsm_rs"
-repository = "https://github.com/rincewound/fsm_rs"
-documentaation = "https://github.com/rincewound/fsm_rs"
+homepage = "https://github.com/rincewound/const_queue"
+repository = "https://github.com/rincewound/const_queue"
+documentation = "https://github.com/rincewound/const_queue"
 readme = "Readme.md"
 keywords = ["Data structures", "no_std"]
 
