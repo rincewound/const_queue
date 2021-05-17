@@ -9,7 +9,7 @@ homepage = "https://github.com/rincewound/const_queue"
 repository = "https://github.com/rincewound/const_queue"
 documentation = "https://github.com/rincewound/const_queue"
 readme = "Readme.md"
-keywords = ["Data structures", "no_std"]
+keywords = ["Data-structures", "no-std"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
