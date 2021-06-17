@@ -1,4 +1,4 @@
-
+#![no_std]
 #[derive(Debug, PartialEq)]
 pub enum QueueErr
 {
